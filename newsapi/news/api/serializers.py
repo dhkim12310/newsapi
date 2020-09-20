@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from news.api.models import Article
 
-class AticleSerializer(serializers.Serializer):
+class ArticleSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     author = serializers.CharField()
     title = serializers.CharField()
@@ -15,7 +15,7 @@ class AticleSerializer(serializers.Serializer):
 
     def create(self,validated_data):
         Article.objects.create(**validated_data)
-        
+
     def update(self,instance,validated_data):
         instance.author = validated_data.get('author',instance.author)
         instance.title = validated_data.get('title',instance.title)
